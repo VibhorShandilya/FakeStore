@@ -1,21 +1,21 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import Nav from "./Navbar";
 import Footer from "./footer";
-const  ValueF = (props) => {
+const  ValueF = () => {
     const[data,setdata]=useState([])
     const baseUrl="https://dummyjson.com/products?skip=1&limit=21";
-  
+  const navigate = useNavigate();
    
     useEffect(() => {
       axios.get(baseUrl).then((response) => {
         setdata(response.data.products);
       });
     }, []);
-    let Transver = props;
+
  
   
       return ( 
@@ -41,9 +41,8 @@ const  ValueF = (props) => {
   <p className="mt-3">{data.title}</p>
 
   <p className="d-flex justify-content-center">Price {data.price}</p>
-  <p><Link to="details">
-        <Button variant="primary" onClick={()=>Transver.address(data.id)} >See More </Button>
-        </Link></p>
+  <Button variant="primary" onClick={()=>navigate(`details/${data.id}`)} >See More </Button>
+ 
 </div>
 <hr />
 </div>         

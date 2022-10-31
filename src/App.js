@@ -12,40 +12,25 @@ import Trending from './components/Trending';
 import Recent from './components/Recent';
 import All from './components/All';
 import ValueF from './components/ValueF';
-import Cart from './cart';
+import Error from './Error';
 function App() {
-const [id,setid]=useState()
-function address(data)
-{
-   setid(data);
-   console.log("here",data);
-}
-
-const[cart,setcart]=useState([])
-function cartv(a)
-{
-   setcart(a);
-   console.log("here in app",a);
-}
-
-
   return (    
      <>
     <Router>
      <Routes>
-      <Route exact path="/"element={<Home address={address}/>} ></Route>
-      <Route path="details" element={<Details id={id}  />} ></Route>
-      <Route path="vfm" element={<ValueF  address={address} />} ></Route>
-      <Route path="vfm/details" element={<Details id={id} cart={cartv} />} ></Route>
-      <Route path="trending" element={<Trending address={address} />} ></Route>
-      <Route path="trending/details" element={<Details id={id} cart={cartv} />} ></Route>
-      <Route path="bestseller" element={<BestsellerF  address={address}/>} ></Route>
-      <Route path="bestseller/details" element={<Details id={id} cart={cartv} />} ></Route>
-      <Route path="recent" element={<Recent address={address} />} ></Route>
-      <Route path="recent/details" element={<Details id={id} cart={cartv} />} ></Route>
-      <Route path="all" element={<All address={address}/>} ></Route>
-      <Route path="all/details" element={<Details id={id} cart={cartv}  />} ></Route>
-      <Route path="cart" element={<Cart id={cart}  />} ></Route>
+      <Route exact path="/"element={<Home  />} ></Route>
+      <Route path="details/:id" element={<Details  />} ></Route>
+      <Route path="vfm" element={<ValueF/>} ></Route>
+      <Route path="vfm/details/:id" element={<Details/>} ></Route>
+      <Route path="trending" element={<Trending/>} ></Route>
+      <Route path="trending/details/:id" element={<Details/>} ></Route>
+      <Route path="bestseller" element={<BestsellerF/>} ></Route>
+      <Route path="bestseller/details/:id" element={<Details/>} ></Route>
+      <Route path="recent" element={<Recent/>} ></Route>
+      <Route path="recent/details/:id" element={<Details/>} ></Route>
+      <Route path="all" element={<All  />} ></Route>
+      <Route path="all/details/:id" element={<Details/>} ></Route>
+      <Route path="*" element={<Error />} ></Route>
 
       </Routes>
      </Router>

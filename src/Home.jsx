@@ -21,7 +21,7 @@ let image=[
       <div className="col-12">
         <Nav/>
       </div>
-      <div className="col-12">
+      <div className="col-12"style={{marginTop:"80px"}}>
         <Slider images={image}></Slider>
       </div>
       <div className="col-12">

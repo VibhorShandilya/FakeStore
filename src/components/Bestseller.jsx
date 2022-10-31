@@ -1,24 +1,23 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
-import Card from 'react-bootstrap/Card';
+import {useNavigate} from 'react-router-dom';
 import { useState, useEffect } from "react";
 import axios from 'axios';
-import './Complete.css'
-const Bestseller= (props) => {
+import './Complete.css';
+
+const Bestseller= () => {
 
     const[data,setdata]=useState([])
   const baseUrl="https://dummyjson.com/products?skip=30&limit=6";
 
- 
+const navigate = useNavigate(); 
   useEffect(() => {
     axios.get(baseUrl).then((response) => {
       setdata(response.data.products);
     });
   }, []);
 
-console.log("Me",props.value)
-let Transver = props.value;
+
     return ( 
 
         <>
@@ -42,9 +41,13 @@ let Transver = props.value;
   <p className="mt-3">{data.title}</p>
 
   <p className="d-flex justify-content-center">Price {data.price}</p>
-  <p><Link to="details">
+  <p>
+  <Button variant="primary" onClick={()=>navigate(`details/${data.id}`)} >See More </Button>
+
+    {/* <Link to="details">
         <Button variant="primary" onClick={()=>Transver.address(data.id)} >See More </Button>
-        </Link></p>
+        </Link> */}
+        </p>
 </div>
 <hr />
 </div>         

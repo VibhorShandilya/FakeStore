@@ -1,11 +1,11 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import './Complete.css'
-const Topview= (props) => {
+const Topview= () => {
     //  let data=[
     //     {name:"vini",id:"user/1",age:22},
     //     {name:"vini2",id:"user/2",age:23},
@@ -13,7 +13,7 @@ const Topview= (props) => {
     // ]
     const[data,setdata]=useState([])
   const baseUrl="https://dummyjson.com/products?skip=20&limit=6";
-
+  const navigate = useNavigate(); 
  
   useEffect(() => {
     axios.get(baseUrl).then((response) => {
@@ -21,8 +21,6 @@ const Topview= (props) => {
     });
   }, []);
 
-console.log("Me",props.value)
-let Transver = props.value;
     return ( 
 
         <>
@@ -46,9 +44,7 @@ let Transver = props.value;
   <p className="mt-3">{data.title}</p>
 
   <p className="d-flex justify-content-center">Price {data.price}</p>
-  <p><Link to="details">
-        <Button variant="primary" onClick={()=>Transver.address(data.id)} >See More </Button>
-        </Link></p>
+  <Button variant="primary" onClick={()=>navigate(`details/${data.id}`)} >See More </Button>
 </div>
 <hr />
 </div>
