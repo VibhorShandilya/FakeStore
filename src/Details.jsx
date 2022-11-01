@@ -75,7 +75,7 @@ console.log(data,"here i am")
         
           </div>
           
-          <div className="col-12  text-center text-lg-start mt-2">
+          <div className="col-12    mt-2">
           <p>{value.description}</p>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam ipsa sunt quis harum sit in deleniti provident exercitationem totam, iusto necessitatibus delectus, cumque quia molestiae rem quidem possimus esse ad.</p>
           </div>
